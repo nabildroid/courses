@@ -16,13 +16,15 @@ module.exports = ({mode})=>{
                 },
                 {
                     test: /\.css$/,
-                    use: ["style-loader","css-loader"]
+                    use: [miniCssExtractPlugin.loader,"css-loader"]
                 }
             ]
         },
         plugins:[
             new htmlWebpackPlugin(),
-            new miniCssExtractPlugin()
+            new miniCssExtractPlugin({
+                ignoreOrder: true,
+            })
         ]
     }
 };

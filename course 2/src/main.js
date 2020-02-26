@@ -1,13 +1,13 @@
-import cdn from "./cdn";
-const Root = async () => import("./root");
+import { render } from "react-dom";
+import "./style/main.css";
+import app from "./app";
+import { appName } from "./caption";
 
-const body = document.body;
+const { body } = document;
 
+const root = document.createElement("div");
+root.setAttribute("id", "root");
 
-window.addEventListener("DOMContentLoaded",async ()=>{
-    const root = await Root();
-    body.appendChild(root);
-});
+render(app(appName), root);
 
-
-cdn.forEach(s=>body.appendChild(s));
+body.appendChild(root);
